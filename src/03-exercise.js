@@ -18,6 +18,13 @@ function exercise03() {
   // Complete the code of the function
   // Make sure to return the fetch method call
   // return fetch()...
+  return fetch("https://jsonplaceholder.typicode.com/posts/1/comments")
+    .then((res) => { return res.json(); })
+    .then((data) => {
+      
+      document.getElementById("data").innerHTML = JSON.stringify(data, null, 2);
+/*       $("#data").text(JSON.stringify(data, null, 2));
+ */    });
 }
 
 export default exercise03;

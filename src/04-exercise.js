@@ -37,6 +37,42 @@ function exercise04() {
   // Make sure to return the axios.get() method call
   //
   // return axios.get()...
+
+  return axios.get("https://jsonplaceholder.typicode.com/posts?_limit=6")
+    .then((response) => {
+      let getInfo = response.data;
+
+      for (let el in getInfo) {
+        let div = document.createElement("div");
+        div.classList.add("post");
+        let para1 = document.createElement("p");
+        para1.classList.add("post__title");
+        para1.textContent = el.title;
+        let para2 = document.createElement("p");
+        para2.textContent = el.body;
+        div.appendChild(para1);
+        div.appendChild(para2);
+        let mainDiv = document.querySelector(".ex4-container");
+        mainDiv.appendChild(div);
+      }
+    });
+
+  /*  SOLUTION FROM JOEL
+  
+  return axios
+    .get("https://jsonplaceholder.typicode.com/posts?_limit=6")
+    .then((data) => {
+      const container = $(".ex4-container");
+
+      data.data.forEach((post) => {
+        let postCont = $("<div class='post'></div>");
+
+        postCont.append(`<p class='post__title'>${post.title}</p>`);
+        postCont.append(`<p>${post.body}</p>`);
+
+        container.append(postCont);
+      });
+    }); */
 }
 
 export default exercise04;
